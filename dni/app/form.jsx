@@ -23,7 +23,6 @@ export default function Form() {
   useEffect(() => {
     if (!params?.dni) return;
 
-    // solo si el DNI recibido es diferente al que ya está cargado
     if (params.dni !== form.dni) {
       setForm({
         tramite: params.tramite || "",

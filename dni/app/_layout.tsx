@@ -3,13 +3,12 @@ import { useCallback } from "react";
 import { usePersonaStore } from "../store/Persona.store";
 
 export default function Layout() {
-  
-  
-   const clearPersona = usePersonaStore((state) => state.clearPersona);
+
+
+  const clearPersona = usePersonaStore((state) => state.clearPersona);
 
   useFocusEffect(
     useCallback(() => {
-      // se ejecuta cada vez que cambio de path
       clearPersona();
       console.log("Layout: datos limpiados");
       return () => {
@@ -23,6 +22,7 @@ export default function Layout() {
     <Tabs>
       <Tabs.Screen name="scan" options={{ title: "Escanear DNI" }} />
       <Tabs.Screen name="form" options={{ title: "Nuevo registro" }} />
+      <Tabs.Screen name="times" options={{ title: "Cargar tiempos" }} />
       <Tabs.Screen
         name="edit"
         options={{ title: "Editar persona", href: null }}
