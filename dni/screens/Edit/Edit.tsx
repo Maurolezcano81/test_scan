@@ -2,25 +2,25 @@ import { useLocalSearchParams, useRouter } from "expo-router";
 import { useEffect, useState } from "react";
 import { Alert, StyleSheet, TextInput, View } from "react-native";
 import { Button, Text } from "react-native-paper";
-import { baseUrl } from '../constants/Colors';
+import { baseUrl } from '../../constants/Colors';
 
 export default function Edit() {
   const { dni } = useLocalSearchParams();
   const router = useRouter();
   const [data, setData] = useState(null);
 
-useEffect(() => {
-  if (!dni) return;
+  useEffect(() => {
+    if (!dni) return;
 
-  setData(null); // 👈
-  fetch(`${baseUrl}personas/${dni}`)
-    .then((res) => res.json())
-    .then((json) => setData(json))
-    .catch((err) => {
-      console.error(err);
-      Alert.alert("Error consultando persona");
-    });
-}, [dni]);
+    setData(null); // 👈
+    fetch(`${baseUrl}personas/${dni}`)
+      .then((res) => res.json())
+      .then((json) => setData(json))
+      .catch((err) => {
+        console.error(err);
+        Alert.alert("Error consultando persona");
+      });
+  }, [dni]);
 
   const handleChange = (key, value) => {
     setData({ ...data, [key]: value });
@@ -67,6 +67,6 @@ useEffect(() => {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 16 },
+  container: { flex: 1, padding: 16, backgroundColor: "#fff" },
   input: { marginVertical: 4, borderWidth: 1, borderColor: "#ccc", padding: 8 },
 });
